@@ -112,16 +112,12 @@ class Rbkmoney extends PaymentModule {
     $customer = new Customer(intval($params['cart']->id_customer));
     $rbkm_eshopid = Configuration::get('RBKM_ESHOPID');
     $currency = $this->getCurrency();
-//    $today = date("Y-m-d H:i:s");
 
     if (!Validate::isLoadedObject($address) OR !Validate::isLoadedObject($customer) OR !Validate::isLoadedObject($currency)) {
       return $this->l('Error: (invalid address or customer)');
     }
 
     $this::validateOrder($params['cart']->id, Configuration::get('PS_OS_BANKWIRE'), $params['cart']->getOrderTotal(), 'rbkmoney', NULL, NULL, (int) $currency->id, FALSE, $customer->secure_key);
-
-//    $order = new Order($this->currentOrder);
-
 
     $products = $params['cart']->getProducts();
     $serviceName = '';
