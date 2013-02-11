@@ -84,7 +84,7 @@ class Rbkmoney extends PaymentModule {
   public function displayFormSettings() {
     $rbkm_eshopid = htmlentities(Configuration::get('RBKM_ESHOPID'), ENT_COMPAT, 'UTF-8');
     $rbkm_pass = htmlentities(Configuration::get('RBKM_PASS'), ENT_COMPAT, 'UTF-8');
-//    $rbkm_debug = htmlentities(Configuration::get('RBKM_DEBUG'), ENT_COMPAT, 'UTF-8');
+
     if (htmlentities(Configuration::get('RBKM_DEBUG'), ENT_COMPAT, 'UTF-8') == 'true') {
       $on = 'checked="checked"';
       $off = '';
