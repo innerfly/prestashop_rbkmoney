@@ -2,7 +2,7 @@
 <module>
     <name>rbkmoney</name>
     <displayName><![CDATA[RBK Money]]></displayName>
-    <version><![CDATA[0.1]]></version>
+    <version><![CDATA[0.2]]></version>
     <description><![CDATA[Accept payments by RBK Money payment system]]></description>
     <author><![CDATA[]]></author>
     <tab><![CDATA[payments_gateways]]></tab>

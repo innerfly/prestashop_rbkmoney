@@ -43,7 +43,7 @@ class Rbkmoney extends PaymentModule {
     parent::install();
     Configuration::updateValue('RBKM_ESHOPID', '');
     Configuration::updateValue('RBKM_PASS', '');
-    Configuration::updateValue('RBKM_DEBUG', '0');
+    Configuration::updateValue('RBKM_DEBUG', 'false');
     $this->registerHook('payment');
     $this->registerHook('paymentReturn');
     return TRUE;
@@ -84,7 +84,15 @@ class Rbkmoney extends PaymentModule {
   public function displayFormSettings() {
     $rbkm_eshopid = htmlentities(Configuration::get('RBKM_ESHOPID'), ENT_COMPAT, 'UTF-8');
     $rbkm_pass = htmlentities(Configuration::get('RBKM_PASS'), ENT_COMPAT, 'UTF-8');
-    $rbkm_debug = htmlentities(Configuration::get('RBKM_DEBUG'), ENT_COMPAT, 'UTF-8') == '0' ? '' : 'checked="checked"';
+//    $rbkm_debug = htmlentities(Configuration::get('RBKM_DEBUG'), ENT_COMPAT, 'UTF-8');
+    if (htmlentities(Configuration::get('RBKM_DEBUG'), ENT_COMPAT, 'UTF-8') == 'true') {
+      $on = 'checked="checked"';
+      $off = '';
+    }
+    else {
+      $on = '';
+      $off = 'checked="checked"';
+    }
 
     $this->output .= '<form action="' . $_SERVER['REQUEST_URI'] . '" method="post">
 		<fieldset>
@@ -95,8 +103,8 @@ class Rbkmoney extends PaymentModule {
 			<div class="margin-form"><input type="text" name="rbkm_pass" id="rbkm_pass" value="' . $rbkm_pass . '" /></div>
 			<label>' . $this->l('Log notifications from RBK Money (Advanced Parameters > Logs)') . '</label>
 			<div class="margin-form">
-			  <input type="radio" name="rbkm_debug" value="0"' . $rbkm_debug . '/>Off
-			  <input type="radio" name="rbkm_debug" value="1"' . $rbkm_debug . '/>On
+			  <input type="radio" name="rbkm_debug" value="false" ' . $off . '/>Off
+			  <input type="radio" name="rbkm_debug" value="true" ' . $on . '/>On
 			</div>
 
     <div class="margin-form"><input type="submit" name="submit" value="' . $this->l('Update settings') . '" class="button" /></div>
@@ -116,8 +124,6 @@ class Rbkmoney extends PaymentModule {
     if (!Validate::isLoadedObject($address) OR !Validate::isLoadedObject($customer) OR !Validate::isLoadedObject($currency)) {
       return $this->l('Error: (invalid address or customer)');
     }
-
-    $this::validateOrder($params['cart']->id, Configuration::get('PS_OS_BANKWIRE'), $params['cart']->getOrderTotal(), 'rbkmoney', NULL, NULL, (int) $currency->id, FALSE, $customer->secure_key);
 
     $products = $params['cart']->getProducts();
     $serviceName = '';
