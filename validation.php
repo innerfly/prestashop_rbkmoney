@@ -73,9 +73,6 @@ if ($_POST) {
     exit();
   }
   else {
-//    $msg = "cart id " . $cart->id . "PS_OS_BANKWIRE " . Configuration::get('PS_OS_BANKWIRE') . "total " . $cart->getOrderTotal() . "curr " . $rbkmoney->getCurrency()->id . "secret " . $customer->secure_key;
-//    Logger::AddLog('[tst] ' . $msg, 2, NULL, NULL, NULL, TRUE);
-
     if ($response['paymentStatus'] == '3') {
       $rbkmoney->validateOrder((int)$cart->id, Configuration::get('PS_OS_BANKWIRE'), $cart->getOrderTotal(), 'rbkmoney', NULL, NULL, (int) $rbkmoney->getCurrency()->id, FALSE, $customer->secure_key);
       $id_order = Order::getOrderByCartId(intval($response['orderId']));
