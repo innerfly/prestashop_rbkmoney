@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
-    <name>rbkmoney</name>
-    <displayName><![CDATA[RBK Money]]></displayName>
-    <version><![CDATA[0.2]]></version>
-    <description><![CDATA[Accept payments by RBK Money payment system]]></description>
-    <author><![CDATA[]]></author>
-    <tab><![CDATA[payments_gateways]]></tab>
-    <confirmUninstall>Are you sure you want to delete your details ?</confirmUninstall>
-    <is_configurable>1</is_configurable>
-    <need_instance>1</need_instance>
-    <limited_countries></limited_countries>
+	<name>rbkmoney</name>
+	<displayName><![CDATA[RBK Money payment system]]></displayName>
+	<version><![CDATA[0.2]]></version>
+	<description><![CDATA[Accept payments by RBK Money payment system]]></description>
+	<author><![CDATA[]]></author>
+	<tab><![CDATA[payments_gateways]]></tab>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+	<limited_countries></limited_countries>
 </module>
