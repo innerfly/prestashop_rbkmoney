@@ -27,7 +27,7 @@
 include(dirname(__FILE__) . '/../../config/config.inc.php');
 include(dirname(__FILE__) . '/rbkmoney.php');
 
-define('RBKMONEY_ALLOWED_IP', '89.111.188.128, 46.38.182.208, 46.38.182.209, 46.38.182.210, 89.111.188.129, 94.236.107.4, 94.236.107.1, 95.215.102.166');
+define('RBKMONEY_ALLOWED_IP', '89.111.188.128, 195.122.9.148');
 
 // check valid IP
 $allowed_ip = explode(',', RBKMONEY_ALLOWED_IP);
