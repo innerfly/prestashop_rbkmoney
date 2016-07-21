@@ -7,7 +7,7 @@ define('RBKMONEY_ALLOWED_IP', '89.111.188.128, 89.111.188.129, 94.236.107.4, 195
 
 
 // check valid IP
-$allowed_ip = explode(',', RBKMONEY_ALLOWED_IP);
+$allowed_ip = array_map('trim', explode(',', RBKMONEY_ALLOWED_IP));
 $valid_ip = in_array($_SERVER['REMOTE_ADDR'], $allowed_ip);
 if (!$valid_ip && isset($_POST['eshopId'])) {
     Logger::AddLog('[RBK Money] Post request from not allowed IP:' . $_SERVER['REMOTE_ADDR'] . '. Status of order ID ' . stripcslashes($_POST['eshopId']) . ' not changed',
